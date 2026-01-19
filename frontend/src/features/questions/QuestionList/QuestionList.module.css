@@ -1,0 +1,288 @@
+/* Question List Container */
+.question_list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  padding: 10px 20px;
+}
+
+/* Individual Question Card */
+.question_item {
+  background-color: var(--card-bg) !important;
+  display: flex;
+  align-items: center;
+  padding: 20px;
+  border-radius: 12px;
+  background: #ffffff;
+  box-shadow: 0 40px 120px rgba(0, 0, 0, 0.09);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+  text-decoration: none;
+  color: inherit;
+}
+
+.question_item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  background: linear-gradient(135deg, #f0f4ff, #dbe6ff);
+}
+
+/* Left: Avatar + Username */
+.user_info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100px;
+  text-align: center;
+  margin-right: 20px;
+}
+
+.avatar {
+  font-size: 45px;
+  color: #a8a5a5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: #f5f5f5;
+  padding: 10px;
+  transition: all 0.3s ease;
+}
+
+.question_item:hover .avatar {
+  background: #3b50b6;
+  color: white;
+  transform: scale(1.2);
+}
+
+.user_name {
+  font-size: 14px;
+  font-weight: 500;
+  color: #555;
+  margin-top: 8px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  width: 100%;
+}
+
+/* Middle: Question Content + Meta */
+.question_content {
+  flex: 1;
+  padding: 0 20px;
+}
+
+.question_title {
+  font-size: 18px;
+  font-weight: 600;
+  color: #222;
+  line-height: 1.3;
+  transition: color 0.3s ease;
+}
+
+.question_item:hover .question_title {
+  color: #3b50b6;
+}
+
+.question_meta {
+  font-size: 13px;
+  color: #aaa;
+  margin-top: 5px;
+}
+
+/* Right: Arrow */
+.arrow {
+  font-size: 24px;
+  color: #888;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.question_item:hover .arrow {
+  color: #3b50b6;
+  transform: translateX(5px);
+}
+
+/* States */
+.loading,
+.no_data {
+  text-align: center;
+  padding: 60px 20px;
+  font-style: italic;
+  color: #888;
+  font-size: 16px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .question_item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .user_info {
+    flex-direction: row;
+    width: 100%;
+    margin-right: 0;
+    gap: 10px;
+  }
+
+  .question_content {
+    padding: 0;
+  }
+
+  .arrow {
+    align-self: flex-end;
+  }
+}
+
+@media (max-width: 480px) {
+  .question_title {
+    font-size: 16px;
+  }
+
+  .user_name {
+    font-size: 13px;
+  }
+}
+/*  */
+.arrow_circle {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #3b50b6, #6c82f1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.question_item:hover .arrow_circle {
+  transform: scale(1.2);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Action group (arrow + action buttons) */
+.action_group {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.icon_btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  border: 1px solid rgba(34, 34, 34, 0.06);
+  background: #f7f8fb;
+  color: #2f3a7a;
+  cursor: pointer;
+  transition: transform 0.12s ease, box-shadow 0.12s ease;
+}
+
+.icon_btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 14px rgba(47, 58, 122, 0.08);
+}
+
+.icon_btn_danger {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  border: 1px solid rgba(220, 53, 69, 0.08);
+  background: #fff6f7;
+  color: #c92a2a;
+  cursor: pointer;
+}
+
+.icon_btn_danger:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 14px rgba(201, 42, 42, 0.06);
+}
+/* 1. When the question card turns white on hover in dark mode */
+:global([data-theme="dark"]) .question_item:hover {
+  background-color: #ffffff !important;
+}
+
+/* 2. Force the title and text inside that specific card to turn black */
+:global([data-theme="dark"]) .question_item:hover .question_title,
+:global([data-theme="dark"]) .question_item:hover .username,
+:global([data-theme="dark"]) .question_item:hover .question_content,
+:global([data-theme="dark"]) .question_item:hover .time_stamp {
+  color: #000000 !important;
+}
+
+/* pagination */
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  margin: 30px 0 10px;
+}
+
+.page_btn {
+  min-width: 36px;
+  height: 36px;
+  padding: 0 12px;
+  border-radius: 10px;
+  border: none;
+  background: #ffffff;
+  color: #444;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+  transition:
+    background 0.3s ease,
+    color 0.3s ease,
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.page_btn:hover:not(:disabled) {
+  background: linear-gradient(135deg, #3b50b6, #6c82f1);
+  color: #ffffff;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(59, 80, 182, 0.35);
+}
+
+.page_btn.active {
+  background: linear-gradient(135deg, #3b50b6, #6c82f1);
+  color: #ffffff;
+  font-weight: 600;
+  box-shadow: 0 10px 30px rgba(59, 80, 182, 0.4);
+}
+
+.page_btn:disabled {
+  background: #f1f1f1;
+  color: #aaa;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+.ellipsis {
+  padding: 0 6px;
+  font-size: 18px;
+  color: #999;
+  user-select: none;
+}
+
+/* Dark mode pagination */
+:global([data-theme="dark"]) .pagination .page_btn {
+  background: #1f1f1f;
+  color: #ccc;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.6);
+}
+
+:global([data-theme="dark"]) .pagination .page_btn:hover:not(:disabled),
+:global([data-theme="dark"]) .pagination .page_btn.active {
+  background: linear-gradient(135deg, #3b50b6, #6c82f1);
+  color: #fff;
+}
+

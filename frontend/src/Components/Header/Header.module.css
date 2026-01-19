@@ -1,0 +1,93 @@
+.headerWrapper {
+  display: flex;
+  justify-content: center;
+  background-color: #ffffff;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  width: 100%;
+  align-items: center;
+  transition: background-color 0.3s ease;
+}
+
+.headerContainer {
+  width: 100%;
+  max-width: 1200px;
+  /* margin: 0 auto; */
+  display: flex;
+  justify-content: space-between;
+  /* align-items: center; */
+  padding: 5px 40px;
+  height: 80px;
+}
+
+.navMenu {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+
+.navItem {
+  text-decoration: none;
+  color: var(--global-text);
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.navItem:hover {
+  color: #fe8402; /* Orange hover */
+}
+
+.authButton {
+  background-color: #516cf0;
+  color: white;
+  border: none;
+  padding: 8px 45px;
+  border-radius: 4px;
+  font-weight: 600;
+  font-size: 15px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.authButton:hover {
+  background-color: #ff8500;
+}
+
+/* --- DARK MODE OVERRIDES (FIX VISIBILITY) --- */
+
+/* Inverts the logo automatically when the data-theme is dark */
+
+:global([data-theme="dark"]) .logoImg {
+  filter: brightness(0) invert(1) !important;
+}
+
+/* 1. Background colors */
+:global([data-theme="dark"]) .headerWrapper {
+  background-color: #1a1a2e !important;
+}
+
+:global([data-theme="dark"]) body {
+  background-color: #121221 !important;
+}
+
+/* 2. Text Visibility (Force White) */
+:global([data-theme="dark"]) .navItem,
+:global([data-theme="dark"]) p,
+:global([data-theme="dark"]) h1,
+:global([data-theme="dark"]) h2,
+:global([data-theme="dark"]) h3 {
+  color: #ffffff !important;
+}
+
+/* 3. Logo Visibility (Inverts black logo to white) */
+:global([data-theme="dark"]) .logoImg {
+  filter: brightness(0) invert(1);
+}
+
+@media (max-width: 768px) {
+  .navItem {
+    display: none;
+  }
+}
